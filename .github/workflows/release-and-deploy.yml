@@ -193,6 +193,9 @@ jobs:
           SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
           SLUG: wpgraphql-ide
           VERSION: ${{ steps.get_version_info.outputs.version_number }}
+          # Set to a non-existent directory to prevent assets from being deployed
+          # The action defaults to .wordpress-org and will try to deploy assets if that directory exists
+          # Setting to empty string ('') doesn't work as it defaults to the workspace root
           ASSETS_DIR: '.wordpress-org-assets-disabled'
 
       - name: Create plugin artifact
