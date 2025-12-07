@@ -66,4 +66,8 @@ wpgraphql-ide.zip
 /playwright/.cache/
 /@wpgraphql/
 
+# Prevent accidental creation of the assets directory used in workflow
+# This directory must not exist to prevent WordPress.org asset deployment failures
+.wordpress-org-assets-disabled
+
 **/package-lock.json
