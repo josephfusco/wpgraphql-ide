@@ -193,7 +193,7 @@ jobs:
           SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
           SLUG: wpgraphql-ide
           VERSION: ${{ steps.get_version_info.outputs.version_number }}
-          ASSETS_DIR: ''
+          ASSETS_DIR: '.wordpress-org-assets-disabled'
 
       - name: Create plugin artifact
         run: npm run build:zip
