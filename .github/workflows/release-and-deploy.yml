@@ -194,8 +194,9 @@ jobs:
           SLUG: wpgraphql-ide
           VERSION: ${{ steps.get_version_info.outputs.version_number }}
           # Set to a non-existent directory to prevent assets from being deployed
-          # The action defaults to .wordpress-org and will try to deploy assets if that directory exists
-          # Setting to empty string ('') doesn't work as it defaults to the workspace root
+          # When ASSETS_DIR is empty (''), the check becomes: if [[ -d "$GITHUB_WORKSPACE/" ]]
+          # which always evaluates to true, causing unwanted asset deployment attempts
+          # A non-existent directory triggers "No assets directory found; skipping asset copy"
           ASSETS_DIR: '.wordpress-org-assets-disabled'
 
       - name: Create plugin artifact
